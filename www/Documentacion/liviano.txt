@@ -1,0 +1,5 @@
+Pasos:
+
+1. Restore de la BD
+2. Update de los entrevistadores
+3. scrap

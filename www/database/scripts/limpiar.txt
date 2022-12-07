@@ -1,0 +1,2 @@
+find /mnt/san/www/html/expedientes/storage/app/public/ -type f -name "*.wav_64k.*" -exec rm -f {} \;
+find /mnt/san/www/html/expedientes/storage/app/public/ -type f -name "*.wav.wav" -exec rm -f {} \;

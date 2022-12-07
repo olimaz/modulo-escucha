@@ -1,0 +1,1 @@
+INSERT INTO "catalogos"."aa" ("id_geo", "id_padre", "nivel", "descripcion", "id_tipo", "codigo") VALUES (DEFAULT, 12, 2, 'Ejército de otro país', null, '0402');

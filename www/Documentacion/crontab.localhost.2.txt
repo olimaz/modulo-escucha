@@ -1,0 +1,73 @@
+# Edit this file to introduce tasks to be run by cron.
+# m h  dom mon dow   command
+
+
+
+#Script que verifica diferencia de audios, reconvierte y cifra si es necesario
+#0 1 * * *  sh /root/script_audios_conv_cifra.sh >> /root/logs/$(date +\%Y\%m\%d\%H\%M\%S)_convirtiendo_audio_def.log
+#0 13 * * * sh /root/script_audios_conv_cifra.sh >> /root/logs/$(date +\%Y\%m\%d\%H\%M\%S)_convirtiendo_audio_def.log
+
+#Traer archivos del otro servidor para mantenerse sincronizados
+0 2 * * * sh /root/copia_cron.sh >> /tmp/copia_cron.log  2>&1
+0 14 * * * sh /root/copia_cron.sh >> /tmp/copia_cron.log  2>&1
+
+
+#Transcribir con google
+#*/10 * * * * curl  http://nginx/google/transcribir/revisar -o /tmp/transcribir_vi.txt
+#*/10 * * * * curl  http://nginx/google/transcribir_pr/revisar -o /tmp/transcribir_pr.txt
+#*/10 * * * * curl  http://nginx/google/transcribir_ee/revisar -o /tmp/transcribir_ee.txt
+
+
+#ACTUALIZAR VISTAS
+
+# Actualizar vistas
+#00 02 * * * wget -O /tmp/dinamicas.txt               -t 1 --timeout=3600 http://nginx/excel_generar/dinamicas_fvt
+
+00 03 * * * wget -O /tmp/entrevistas_vi.txt          -t 1 --timeout=3600 http://nginx/excel_generar/entrevistas_fvt  2>&1
+30 03 * * * wget -O /tmp/entrevistas_integrado.txt   -t 1 --timeout=3600 http://nginx/excel_generar/entrevistas_integrado  2>&1
+00 04 * * * wget -O /tmp/entrevsitas_pr.txt          -t 1 --timeout=3600 http://nginx/excel_generar/entrevistas_pr  2>&1
+40 04 * * * wget -O /tmp/casos_informes.txt      -t 1 --timeout=3600 http://nginx/excel_generar/casos  2>&1
+00 06 * * * wget -O /tmp/traza.txt               -t 1 --timeout=3600 http://nginx/excel_generar/traza  2>&1
+20 06 * * * wget -O /tmp/entrevista_seguimiento.txt               -t 1 --timeout=3600 http://nginx/excel_generar/seguimiento  2>&1
+
+# Calficacion de adjuntos
+08 00 * * * wget -O /tmp/excel_calificacion.txt               -t 1 --timeout=3600 http://nginx/excel_generar/control_calificacion  2>&1
+
+
+
+# vista de integracion
+30 04 * * * wget -O /tmp/sim_entrevistas_victima.txt -t 1 --timeout=3600 http://nginx/sim_generar/victimas  2>&1
+
+#Data lake
+00 22 * * * wget -O /tmp/sim_datalake_persona.txt -t 1 --timeout=3600 http://nginx/sim_generar/datos_persona  2>&1
+
+#vistas de fichas
+00 05 * * * wget -O /tmp/f_victima.txt  -t 1 --timeout=3600 http://nginx/excel_generar/fichas_victima  2>&1
+30 05 * * * wget -O /tmp/f_p_entre.txt  -t 1 --timeout=3600 http://nginx/excel_generar/fichas_persona_entrevistada  2>&1
+45 05 * * * wget -O /tmp/f_exilio.txt  -t 1  --timeout=3600 http://nginx/excel_generar/exilio  2>&1
+
+#Vistas de procesamiento
+00 02 * * * wget -O /tmp/a_transcribir.txt  -t 1  --timeout=3600 http://nginx/excel_generar/transcribir_asignacion  2>&1
+30 02 * * * wget -O /tmp/f_etiquetar.txt  -t 1  --timeout=3600 http://nginx/excel_generar/etiquetar_asignacion  2>&1
+
+
+#Vistas de analitica
+00 23 * * * wget -O /tmp/v_analitica_metadatos.txt  -t 1  --timeout=3600 http://nginx/analitica_generar/metadatos  2>&1
+20 23 * * * wget -O /tmp/v_analitica_entrevistado.txt  -t 1  --timeout=3600 http://nginx/analitica_generar/persona_entrevistada  2>&1
+40 23 * * * wget -O /tmp/v_analitica_victima.txt  -t 1  --timeout=3600 http://nginx/analitica_generar/victima  2>&1
+01 00 * * * wget -O /tmp/v_excel_usuario.txt  -t 1  --timeout=3600 http://nginx/excel_generar/usuarios  2>&1
+01 00 * * * wget -O /tmp/v_analitica_exilio.txt  -t 1  --timeout=3600 http://nginx/analitica_generar/exilio_salida  2>&1
+20 00 * * * wget -O /tmp/v_analitica_violencia.txt  -t 1  --timeout=3600 http://nginx/analitica_generar/violencia  2>&1
+00 21 * * * wget -O /tmp/v_analitica_contexto.txt  -t 1  --timeout=3600 http://nginx/analitica_generar/contexto  2>&1
+
+#Clasificador de NVIVO
+00 22 * * * wget -O /tmp/v_clasificador_nvivo.txt  -t 1  --timeout=3600 http://nginx/excel_generar/nvivo  2>&1
+
+#Vista de entrevistas EE
+45 22 * * * wget -O /tmp/v_excel_sujeto_colectivo.txt  -t 1  --timeout=3600 http://nginx/excel_generar/entrevistas_ee  2>&1
+
+
+#Excel de etiquetado
+0 07 * * * wget -O /tmp/v_excel_etiquetado.txt  -t 1  --timeout=86400 http://nginx/excel_generar/etiquetado
+
+

@@ -1,0 +1,1 @@
+alter table fichas.per_ent_rel_victima add column id_victima integer;

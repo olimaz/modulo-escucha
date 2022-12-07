@@ -1,0 +1,12 @@
+# Bash de la BD
+docker exec -it cev-db /bin/bash
+
+# Conectarse al postgres
+psql -U dba
+
+# Drop y Create de la BD
+drop database cev_liviana_desarrollo;
+ create database cev_liviana_desarrollo;
+
+# Restore de la BD
+psql -U dba -d cev_liviana_desarrollo  -f cev.sql

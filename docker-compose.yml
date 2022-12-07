@@ -1,0 +1,49 @@
+version: "3.7"
+services:
+  app:
+    build:
+      args:
+        user: sammy
+        uid: 1000
+      context: ./
+      dockerfile: Dockerfile
+    image: cev
+    container_name: cev-app
+    restart: unless-stopped
+    working_dir: /var/www/
+    volumes:
+      -  ./www:/var/www
+      -  ./docker-compose/php/php.ini:/usr/local/etc/php/php.ini
+    networks:
+      - cev
+
+  db:
+    image: postgres:11-alpine
+    container_name: cev-db
+    restart: always
+    environment:
+      POSTGRES_USER: dba
+      POSTGRES_PASSWORD: sql
+    ports:
+      - 5555:5432
+    volumes:
+      #Persistir datos
+      - ./postgres-data:/var/lib/postgresql/data        
+    networks:
+      - cev
+
+  nginx:
+    image: nginx:alpine
+    container_name: cev-nginx
+    restart: always
+    ports:
+      - 8000:80
+    volumes:
+      - ./www:/var/www
+      - ./docker-compose/nginx:/etc/nginx/conf.d/
+    networks:
+      - cev
+
+networks:
+  cev:
+    driver: bridge

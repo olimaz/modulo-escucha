@@ -1,0 +1,22 @@
+# For example, you can run a backup of all your user accounts
+# at 5 a.m every week with:
+# 0 5 * * 1 tar -zcf /var/backups/home.tgz /home/
+# 
+# For more information see the manual pages of crontab(5) and cron(8)
+# 
+# m h  dom mon dow   command
+
+
+#Traer archivos del otro servidor para mantenerse sincronizados
+0 0 * * * sh /root/copia_cron.sh >> /tmp/copia_cron.log
+0 12 * * * sh /root/copia_cron.sh >> /tmp/copia_cron.log
+
+#Script que verifica diferencia de audios, reconvierte y cifra si es necesario
+0 1 * * *  sh /root/script_audios_conv_cifra.sh >> /root/logs/$(date +\%Y\%m\%d\%H\%M\%S)_convirtiendo_audio_def.log
+0 13 * * * sh /root/script_audios_conv_cifra.sh >> /root/logs/$(date +\%Y\%m\%d\%H\%M\%S)_convirtiendo_audio_def.log
+
+
+#Transcribir con google
+#*/10 * * * * curl  https://sim3.comisiondelaverdad.co/expedientes/public/google/transcribir/revisar -o /tmp/transcribir_vi.txt
+#*/10 * * * * curl  https://sim3.comisiondelaverdad.co/expedientes/public/google/transcribir_pr/revisar -o /tmp/transcribir_pr.txt
+#*/10 * * * * curl  https://sim3.comisiondelaverdad.co/expedientes/public/google/transcribir_ee/revisar -o /tmp/transcribir_ee.txt

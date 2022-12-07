@@ -1,0 +1,1 @@
+alter table fichas.persona_entrevistada add COLUMN sintesis_relato text;

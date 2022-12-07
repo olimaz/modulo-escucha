@@ -1,0 +1,39 @@
+{
+    "content": "Hola Andr\u00e9s!!!\n\nEsta es una transcripci\u00f3n para la prueba de concepto.\n\nSaluditos",
+    "annotation": [
+        {
+            "label": [
+                "Hechos - Desaparici\u00f3n forzada"                        
+            ],
+            "points": [
+                {
+                    "start": 55,
+                    "end": 65,
+                    "text": "a de concep"
+                }
+            ]
+        },
+        {
+            "label": [
+                "Hechos - Homicidio"
+            ],
+            "points": [
+                {
+                    "start": 22,
+                    "end": 41,
+                    "text": "s una transcripci\u00f3n "
+                }
+            ]
+        }
+        
+    ],
+    "extras": null,
+    "metadata": {
+        "first_done_at": 1606754601000,
+        "last_updated_at": 1606755031000,
+        "sec_taken": 0,
+        "last_updated_by": "sim@comisiondelaverdad.co",
+        "status": "done",
+        "evaluation": "NONE"
+    }
+}
