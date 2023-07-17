@@ -1,2 +1,0 @@
-INSERT INTO catalogos.aa (id_padre, nivel, descripcion, id_tipo, codigo) VALUES (1, 2, 'No Sabe / No Responde', null, '0199');
-INSERT INTO catalogos.aa (id_padre, nivel, descripcion, id_tipo, codigo) VALUES (3, 2, 'No sabe / No responde', null, '0299');

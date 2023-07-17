@@ -1,1 +1,0 @@
-INSERT INTO catalogos.criterio_fijo (id_grupo, id_opcion, descripcion, orden) VALUES (21, 30, 'Falla', DEFAULT);

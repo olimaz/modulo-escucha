@@ -1,1 +1,0 @@
-INSERT INTO catalogos.cev (id_geo, id_padre, nivel, descripcion, id_tipo, codigo) VALUES (153, 108, 2, 'Yopal', 2, 'OR');

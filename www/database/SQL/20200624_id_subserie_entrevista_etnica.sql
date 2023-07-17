@@ -1,1 +1,0 @@
-ALTER table esclarecimiento.entrevista_etnica add  id_subserie int default 586;
