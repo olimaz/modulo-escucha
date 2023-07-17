@@ -2,7 +2,7 @@ version: '3'
 services:
     web:
         image: nginx
-        container_name: cev-web
+        container_name: me-web
         volumes:
             - ./www:/var/www
             - ./.docker/conf/nginx/default.conf:/etc/nginx/conf.d/default.conf            
@@ -13,20 +13,20 @@ services:
             - php
             - db
         networks:
-            - cev
+            - me
     php:
         build: .docker
         restart: always
-        container_name: cev-app
+        container_name: me-app
         volumes:
             - ./.docker/conf/php/php.ini:/usr/local/etc/php/conf.d/php.ini
             # - ./.docker/conf/php/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
             -  ./www:/var/www
         networks:
-            - cev
+            - me
     db:
         image: postgres:11-alpine
-        container_name: cev-db
+        container_name: me-db
         restart: always
         environment:
             POSTGRES_USER: dba
@@ -37,7 +37,7 @@ services:
             #Persistir datos
             - ./postgres-data:/var/lib/postgresql/data        
         networks:
-            - cev
+            - me
 networks:
-  cev:
+  me:
     driver: bridge
