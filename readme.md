@@ -49,6 +49,7 @@ Sin embargo, para implementaciones de uso en producción, es importante comprend
 ## Otras referencias
 - Se incluye un archivo de transcripción como ejemplo del formato esperado.  Este archivo es generado a partir del aplicativo [oTranscribe](https://otranscribe.com/)
 - También se incluye un archivo de etiquetado, el cual se genera desde el aplicativo [Dataturks](https://docs.dataturks.com/) 
+- se incluye el script de creación de la base datos en ./www/database/entrevistas.sql
 
 ## Anotaciones del creador
 - Se agrega un archivo php.ini local para personalizaciones que pudieran ser necesarias
