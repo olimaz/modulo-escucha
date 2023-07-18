@@ -36,7 +36,8 @@ services:
         volumes:
             #Persistir datos
             - ./postgres-data:/var/lib/postgresql/data      
-            - ./sql/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql  
+            #Inicializar la BD
+            - ./crear_bd.sql:/docker-entrypoint-initdb.d/crear_bd.sql  
         networks:
             - me
 networks:
