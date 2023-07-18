@@ -43,18 +43,19 @@ Sin embargo, para implementaciones de uso en producción, es importante comprend
 1. ¿cómo iniciar todo?
 - `docker-compose up -d` 
 2. Para interactuar con el servidor de aplicaciones, (por ejemplo, correr comandos "php artisan"): 
-- `docker exec -it cev-app /bin/bash`  
+- `docker exec -it me-app /bin/bash`  
 
 
 ## Otras referencias
 - Se incluye un archivo de transcripción como ejemplo del formato esperado.  Este archivo es generado a partir del aplicativo [oTranscribe](https://otranscribe.com/)
 - También se incluye un archivo de etiquetado, el cual se genera desde el aplicativo [Dataturks](https://docs.dataturks.com/) 
-- se incluye el script de creación de la base datos en ./www/database/entrevistas.sql
+- se incluye el script de creación de la base datos en carpeta scripts
+- Importante: el script de creación de la base de datos se ejecuta de forma automática la primera vez que se crea el contenedor.
 
 ## Anotaciones del creador
 - Se agrega un archivo php.ini local para personalizaciones que pudieran ser necesarias
 - Para aumentar el upload_size, tambien modificar el archivo de configuracion de nginx
-- Se modificación del código fuente para deshabilitar la funcionalidad que agrega un marca de agua a los PDF
+- Se modificó del código fuente para deshabilitar la funcionalidad que agrega un marca de agua a los PDF
 - Cambio en .env para deshabilitar el visor interno de pdf
 - Se eliminó la referencia al repositorio del código fuente, para que se incluyan las librerías y todas las dependiencias necesarias sin necesidad de comandos especiales (composer update, npm install, etc.)
 
