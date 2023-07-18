@@ -6,3 +6,5 @@ CREATE DATABASE entrevistas
     TEMPLATE template0;
 
 
+\c entrevistas
+
